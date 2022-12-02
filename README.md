@@ -34,3 +34,14 @@ sudo docker stop myContainer
 sudo docker rm myContainer
 sudo docker image remove httpd:2.4
 systemctl stop docker
+
+#### Docker Compose
+Vous connaissez maintenant les commandes principales pour utiliser une stack Docker Compose. Voici les commandes les plus importantes :
+
+- **`docker-compose up -d`** vous permettra de démarrer l'ensemble des conteneurs en arrière-plan
+- **`docker-compose ps`** vous permettra de voir le status de l'ensemble de votre stack
+- **`docker-compose logs -f --tail 5`** vous permettra d'afficher les logs de votre stack
+- **`docker-compose stop`** vous permettra d'arrêter l'ensemble des services d'une stack
+- **`docker-compose down`** vous permettra de détruire l'ensemble des ressources d'une stack
+- **`docker-compose config`** vous permettra de valider la syntaxe de votre fichier docker-compose.yml.
+
