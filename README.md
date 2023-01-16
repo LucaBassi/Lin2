@@ -45,3 +45,8 @@ Vous connaissez maintenant les commandes principales pour utiliser une stack Doc
 - **`docker-compose down`** vous permettra de détruire l'ensemble des ressources d'une stack
 - **`docker-compose config`** vous permettra de valider la syntaxe de votre fichier docker-compose.yml.
 
+### Supprimer tous les container et volumes 
+docker rm -vf $(docker ps -aq)
+
+### Supprimer tous les images 
+docker rmi -f $(docker images -aq)
