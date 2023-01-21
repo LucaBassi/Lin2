@@ -1,0 +1,23 @@
+version: '3'
+services:
+  front:
+    build:
+      context: ./api-frontend/
+      dockerfile: Dockerfile
+    container_name: frontend
+    restart: unless-stopped
+    environment:
+      - API_BACKEND_URL=172.27.160.1
+      - API_BACKEND_PORT=8001
+    ports:
+      - 8000:8000
+  back:
+    build:
+      context: ./api-backend/
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: unless-stopped
+    ports:
+      - 8001:8001
+    depends_on:
+      - "front"
