@@ -1,0 +1,22 @@
+---
+version: "3.8"
+
+networks:
+  tp-docker-02:
+
+services:
+  db:
+    image: mongo:3.2
+    expose: ["27017"]
+    command: mongod --smallfiles
+    networks:
+      tp-docker-02:
+    restart: always
+
+  web:
+    image: adieperi/tp2docker:v2
+    ports: ["127.0.0.1:5000:5000"]
+    networks:
+      tp-docker-02:
+    restart: always
+    depends_on: ["db"]

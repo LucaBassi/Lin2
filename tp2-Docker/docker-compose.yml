@@ -1,20 +1,22 @@
 version: '3.1'
 networks:
-  net:
+  tp2-Docker:
     ipam:
       config:
-      - subnet: 10.0.0.0/24
+        - subnet: 172.20.0.0/24
 services:
   app:
-    image: datchos/tp2-docker:v2
+    build:
+      tags: ["datchos/tp2-docker"]
+      context: .
     restart: unless-stopped
     environment:
-     - DB=10.0.0.153
+     - DB=172.20.0.11
     depends_on:
-      - mango
+      - mongo
     networks:
-      net:
-        ipv4_address: 10.0.0.152
+      tp2-Docker:
+        ipv4_address:  172.20.0.10
     ports:
       - 5000:5000
   mongo:
@@ -22,7 +24,7 @@ services:
     container_name: mongo
     restart: unless-stopped
     networks:
-      net:
-        ipv4_address: 10.0.0.153
+      tp2-Docker:
+        ipv4_address:  172.20.0.11
     ports:
       - 27017:27017

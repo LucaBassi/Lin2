@@ -30,6 +30,12 @@ sudo nano /var/www/website1/index.html
 sudo docker ps
 #### Commandes docker
 
+
+##### BUILD image 
+
+docker build . -t datchos/tp2docker:v2 --no-cache
+
+
 sudo docker stop myContainer
 sudo docker rm myContainer
 sudo docker image remove httpd:2.4
@@ -46,13 +52,16 @@ Vous connaissez maintenant les commandes principales pour utiliser une stack Doc
 - **`docker-compose config`** vous permettra de valider la syntaxe de votre fichier docker-compose.yml.
 
 ### Supprimer tous les container et volumes 
-docker rm -vf $(docker ps -aq)
+sudo docker rm -vf $(sudo docker ps -aq)
 
 ### Supprimer tous les images 
-docker rmi -f $(docker images -aq)
+sudo docker rmi -f $(sudo docker images -aq)
 
 ## Docker HUB
 https://docs.docker.com/docker-hub/repos/
+
+
+
 
 ENV APACHE_DOCUMENT_ROOT /path/to/new/root
 

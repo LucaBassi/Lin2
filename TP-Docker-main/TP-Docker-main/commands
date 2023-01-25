@@ -1,0 +1,5 @@
+docker build ./api-backend -t adieperi/api-backend --no-cache
+docker build ./api-frontend -t adieperi/api-frontend --no-cache
+
+docker push adieperi/api-frontend:latest
+docker push adieperi/api-backend:latest

@@ -1,0 +1,34 @@
+---
+version: "3.8"
+
+networks:
+  tp-docker:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+services:
+  api-backend:
+    build:
+      tags: ["adieperi/api-backend"]
+      context: "./api-backend"
+    expose: ["8001"]
+    networks:
+      tp-docker:
+        ipv4_address: 172.20.0.10
+    restart: always
+
+  api-frontend:
+    build:
+      tags: ["adieperi/api-frontend"]
+      context: "./api-frontend"
+    environment:
+      - API_BACKEND_URL=172.20.0.10
+      - API_BACKEND_PORT=8001
+    ports:
+      - 127.0.0.1:8000:8000
+    networks:
+      tp-docker:
+        ipv4_address: 172.20.0.11
+    restart: always
+    depends_on: ["api-backend"]
