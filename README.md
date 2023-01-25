@@ -62,8 +62,22 @@ https://docs.docker.com/docker-hub/repos/
 
 
 
-
 ENV APACHE_DOCUMENT_ROOT /path/to/new/root
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+## Commandes dockers
+
+docker build ./api-backend -t adieperi/api-backend --no-cache
+docker build ./api-frontend -t adieperi/api-frontend --no-cache
+
+docker push adieperi/api-frontend:latest
+docker push adieperi/api-backend:latest
+
+
+docker image build -t api-back:v0.1 . --no-cache
+docker container run -p 8001:8001 api-back:v0.1
+docker image tag 374446 auggus/tpdockerv2:v0.3
+docker push auggus/tpdockerv2:v0.2
+docker build . -t enelg/tp2docker:v1 --no-cache
