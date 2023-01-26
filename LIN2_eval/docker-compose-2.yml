@@ -1,0 +1,25 @@
+version: '3.4'
+networks:
+  lin2:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+services:
+  api-server:
+    image: datchos/api-server:v1
+    restart: unless-stopped
+    networks:
+      lin2:
+        ipv4_address:  172.20.0.10
+    ports:
+      - 5000:5000
+  api-client:
+    image: datchos/api-client:v1
+    restart: unless-stopped
+    depends_on:
+      - "api-server"
+    networks:
+      lin2:
+        ipv4_address:  172.20.0.11
+    ports:
+      - 8000:8000
