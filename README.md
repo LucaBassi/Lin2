@@ -45,39 +45,39 @@ systemctl stop docker
 Vous connaissez maintenant les commandes principales pour utiliser une stack Docker Compose. Voici les commandes les plus importantes :
 
 - **`docker-compose up -d`** vous permettra de démarrer l'ensemble des conteneurs en arrière-plan
-- **`docker-compose ps`** vous permettra de voir le status de l'ensemble de votre stack
-- **`docker-compose logs -f --tail 5`** vous permettra d'afficher les logs de votre stack
-- **`docker-compose stop`** vous permettra d'arrêter l'ensemble des services d'une stack
+- **`docker-compose ps`** vous permettra de voir le status de l'ensemble de votre stack  
+- **`docker-compose logs -f --tail 5`** vous permettra d'afficher les logs de votre stack  
+- **`docker-compose stop`** vous permettra d'arrêter l'ensemble des services d'une stack  
 - **`docker-compose down`** vous permettra de détruire l'ensemble des ressources d'une stack
 - **`docker-compose config`** vous permettra de valider la syntaxe de votre fichier docker-compose.yml.
 
 ### Supprimer tous les container et volumes 
-sudo docker rm -vf $(sudo docker ps -aq)
+sudo docker rm -vf $(sudo docker ps -aq)    
 
 ### Supprimer tous les images 
-sudo docker rmi -f $(sudo docker images -aq)
+sudo docker rmi -f $(sudo docker images -aq)  
 
 ## Docker HUB
-https://docs.docker.com/docker-hub/repos/
+https://docs.docker.com/docker-hub/repos/    
 
 
 
-ENV APACHE_DOCUMENT_ROOT /path/to/new/root
+ENV APACHE_DOCUMENT_ROOT /path/to/new/root  
 
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf  
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf  
 
 ## Commandes dockers
 
-docker build ./api-backend -t adieperi/api-backend --no-cache
-docker build ./api-frontend -t adieperi/api-frontend --no-cache
+docker build ./api-backend -t adieperi/api-backend --no-cache  
+docker build ./api-frontend -t adieperi/api-frontend --no-cache  
 
-docker push adieperi/api-frontend:latest
-docker push adieperi/api-backend:latest
+docker push adieperi/api-frontend:latest  
+docker push adieperi/api-backend:latest  
 
 
-docker image build -t api-back:v0.1 . --no-cache
-docker container run -p 8001:8001 api-back:v0.1
-docker image tag 374446 auggus/tpdockerv2:v0.3
-docker push auggus/tpdockerv2:v0.2
-docker build . -t enelg/tp2docker:v1 --no-cache
+docker image build -t api-back:v0.1 . --no-cache  
+docker container run -p 8001:8001 api-back:v0.1  
+docker image tag 374446 auggus/tpdockerv2:v0.3  
+docker push auggus/tpdockerv2:v0.2  
+docker build . -t enelg/tp2docker:v1 --no-cache  
